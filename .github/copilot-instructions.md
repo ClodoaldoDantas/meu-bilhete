@@ -1,4 +1,4 @@
-# Copilot Instructions for `web`
+# Copilot Instructions
 
 ## Build, lint, and typecheck commands
 
