@@ -1,7 +1,8 @@
+import type { Route } from './+types/index'
 import { LetterCardEditor } from './components/letter-card-editor'
 import { LettersCounter } from './components/letters-counter'
 
-export function meta() {
+export function meta(): Route.MetaDescriptors {
 	return [
 		{ title: 'Meu Bilhete' },
 		{
@@ -11,11 +12,28 @@ export function meta() {
 	]
 }
 
-export default function Home() {
+export async function loader() {
+	const apiBaseUrl = process.env.API_BASE_URL
+	const response = await fetch(new URL('/letters/count', apiBaseUrl))
+
+	if (!response.ok) {
+		throw new Response('Could not load letters count', { status: 502 })
+	}
+
+	const data = (await response.json()) as { count?: number }
+
+	if (typeof data.count !== 'number' || !Number.isFinite(data.count)) {
+		throw new Response('Invalid letters count response', { status: 502 })
+	}
+
+	return { count: data.count }
+}
+
+export default function Home({ loaderData }: Route.ComponentProps) {
 	return (
 		<main className="min-h-screen bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
 			<LetterCardEditor />
-			<LettersCounter />
+			<LettersCounter count={loaderData.count} />
 		</main>
 	)
 }
