@@ -13,7 +13,7 @@ export function meta(): Route.MetaDescriptors {
 }
 
 export async function loader() {
-	const apiBaseUrl = process.env.API_BASE_URL
+	const apiBaseUrl = process.env.VITE_API_BASE_URL
 	const response = await fetch(new URL('/letters/count', apiBaseUrl))
 
 	if (!response.ok) {
