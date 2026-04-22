@@ -9,7 +9,8 @@
 		"typecheck": "react-router typegen && tsc",
 		"lint": "biome lint ./app",
 		"lint:fix": "biome check --write ./app",
-		"format": "biome format --write ./app"
+		"format": "biome format --write ./app",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"@fontsource-variable/geist": "^5.2.8",
@@ -34,8 +35,15 @@
 		"@types/node": "^22",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.4.0",
 		"tailwindcss": "^4.2.2",
 		"typescript": "^5.9.3",
 		"vite": "^8.0.3"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx,json}": [
+			"biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+		]
 	}
 }
