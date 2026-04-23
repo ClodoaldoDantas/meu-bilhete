@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
 import { z } from 'zod'
 import { Button } from '~/components/ui/button'
@@ -10,9 +11,15 @@ const createLetterSchema = z.object({
 	sender: z.string().trim().min(1, 'Informe o seu nome.'),
 })
 
+const createLetterResponseSchema = z.object({
+	id: z.string().trim().min(1),
+})
+
 type CreateLetterFormData = z.infer<typeof createLetterSchema>
 
 export function LetterCardEditor() {
+	const navigate = useNavigate()
+
 	const {
 		register,
 		handleSubmit,
@@ -48,8 +55,16 @@ export function LetterCardEditor() {
 			return
 		}
 
+		const body = await response.json()
+		const parsedBody = createLetterResponseSchema.safeParse(body)
+
+		if (!parsedBody.success) {
+			toast.error('Não foi possível abrir sua carta. Tente novamente.')
+			return
+		}
+
 		reset()
-		toast.success('Carta criada com sucesso!')
+		navigate(`/letter/${parsedBody.data.id}`)
 	}
 
 	return (
@@ -57,7 +72,7 @@ export function LetterCardEditor() {
 			onSubmit={handleSubmit(onSubmit)}
 			className="w-full flex flex-col items-center"
 		>
-			<div className="w-full max-w-md bg-white border border-zinc-900 p-8 md:p-10 shadow-sm">
+			<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm">
 				<div className="flex items-baseline">
 					<span className="text-lg shrink-0 font-semibold text-foreground">
 						Meu amor,
@@ -72,7 +87,7 @@ export function LetterCardEditor() {
 				</div>
 				<textarea
 					{...register('message')}
-					className="w-full h-40 mt-6 bg-transparent border-none outline-none resize-none leading-relaxed text-muted-foreground placeholder:text-muted-foreground/50 text-base"
+					className="w-full h-44 mt-6 bg-transparent border-none outline-none resize-none leading-relaxed text-muted-foreground placeholder:text-muted-foreground/50 text-base"
 					placeholder="Escreva sua mensagem aqui... Seja sincero(a) e deixe seu coração falar!"
 				/>
 
