@@ -87,7 +87,7 @@ export function LetterCardEditor() {
 				</div>
 				<textarea
 					{...register('message')}
-					className="w-full h-44 mt-6 bg-transparent border-none outline-none resize-none leading-relaxed text-muted-foreground placeholder:text-muted-foreground/50 text-base"
+					className="w-full h-40 mt-6 bg-transparent border-none outline-none resize-none leading-relaxed text-muted-foreground placeholder:text-muted-foreground/50 text-base"
 					placeholder="Escreva sua mensagem aqui... Seja sincero(a) e deixe seu coração falar!"
 				/>
 

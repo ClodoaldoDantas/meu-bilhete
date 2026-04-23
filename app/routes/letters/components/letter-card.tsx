@@ -1,3 +1,5 @@
+import loveImage from '~/assets/love.png'
+
 type LetterCardProps = {
 	letter: {
 		sender: string
@@ -10,6 +12,12 @@ export function LetterCard({ letter }: LetterCardProps) {
 	return (
 		<main className="min-h-screen bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
 			<div className="w-full flex flex-col items-center">
+				<img
+					src={loveImage}
+					alt="Envelope com coração"
+					className="w-full max-w-64 md:max-w-72 mb-6"
+				/>
+
 				<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm">
 					<div className="flex items-baseline">
 						<span className="text-lg shrink-0 font-semibold text-foreground">
@@ -20,7 +28,7 @@ export function LetterCard({ letter }: LetterCardProps) {
 						</p>
 					</div>
 
-					<p className="w-full mt-6 leading-relaxed text-muted-foreground text-base">
+					<p className="w-full h-40 mt-6 leading-relaxed text-muted-foreground text-base overflow-y-auto">
 						{letter.message}
 					</p>
 
