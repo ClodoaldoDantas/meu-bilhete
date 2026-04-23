@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
@@ -34,6 +35,13 @@ export function LetterCardEditor() {
 			sender: '',
 		},
 	})
+
+	const recipientInputRef = useRef<HTMLInputElement>(null)
+	const recipientRegister = register('recipient')
+
+	useEffect(() => {
+		recipientInputRef.current?.focus()
+	}, [])
 
 	const onSubmit = async (data: CreateLetterFormData) => {
 		const apiBaseUrl = import.meta.env.VITE_API_BASE_URL
@@ -81,7 +89,11 @@ export function LetterCardEditor() {
 					<input
 						type="text"
 						placeholder="Destinatário"
-						{...register('recipient')}
+						{...recipientRegister}
+						ref={(element) => {
+							recipientInputRef.current = element
+							recipientRegister.ref(element)
+						}}
 						className="w-full bg-transparent border-none outline-none text-base md:text-lg text-muted-foreground ml-1 placeholder:text-muted-foreground/60"
 					/>
 				</div>
