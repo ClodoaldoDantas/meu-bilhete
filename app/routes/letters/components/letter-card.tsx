@@ -1,4 +1,5 @@
 import loveImage from '~/assets/love.png'
+import { CopyLetterUrlButton } from './copy-letter-url-button'
 
 type LetterCardProps = {
 	letter: {
@@ -12,33 +13,39 @@ export function LetterCard({ letter }: LetterCardProps) {
 	return (
 		<main className="min-h-screen bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
 			<div className="w-full flex flex-col items-center">
-				<img
-					src={loveImage}
-					alt="Envelope com coração"
-					className="w-full max-w-64 md:max-w-72 mb-6"
-				/>
-
 				<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm">
 					<div className="flex items-baseline">
-						<span className="text-lg shrink-0 font-semibold text-foreground">
+						<span className="text-base md:text-lg shrink-0 font-semibold text-foreground">
 							Meu amor,
 						</span>
-						<p className="w-full text-lg text-muted-foreground ml-1">
+						<p className="w-full text-base md:text-lg text-muted-foreground ml-1">
 							{letter.recipient}
 						</p>
 					</div>
 
-					<p className="w-full h-40 mt-6 leading-relaxed text-muted-foreground text-base overflow-y-auto">
+					<p className="w-full h-40 mt-6 leading-relaxed text-muted-foreground text-sm md:text-base overflow-y-auto">
 						{letter.message}
 					</p>
 
-					<div className="mt-8 text-right">
-						<p className="text-base font-semibold text-foreground mb-1">
-							Com amor,
-						</p>
-						<p className="text-base text-muted-foreground">{letter.sender}</p>
+					<div className="flex items-center justify-between mt-8">
+						<img
+							src={loveImage}
+							alt="Envelope com coração"
+							className="w-full max-w-20"
+						/>
+
+						<div className="text-right">
+							<p className="text-sm md:text-base font-semibold text-foreground mb-1">
+								Com amor,
+							</p>
+							<p className="text-sm md:text-base text-muted-foreground">
+								{letter.sender}
+							</p>
+						</div>
 					</div>
 				</div>
+
+				<CopyLetterUrlButton />
 			</div>
 		</main>
 	)
