@@ -1,16 +1,6 @@
-import { LetterCardEditor } from '../home/components/letter-card-editor'
-import { LettersCounter } from '../home/components/letters-counter'
 import type { Route } from './+types/index'
-
-export function meta(): Route.MetaDescriptors {
-	return [
-		{ title: 'Criar Carta | Meu Bilhete' },
-		{
-			name: 'description',
-			content: 'Crie sua cartinha de amor para alguém especial',
-		},
-	]
-}
+import { LetterCardEditor } from './components/letter-card-editor'
+import { LettersCounter } from './components/letters-counter'
 
 export async function loader() {
 	const apiBaseUrl = process.env.VITE_API_BASE_URL
@@ -27,6 +17,16 @@ export async function loader() {
 	}
 
 	return { count: data.count }
+}
+
+export function meta(): Route.MetaDescriptors {
+	return [
+		{ title: 'Criar Carta | Meu Bilhete' },
+		{
+			name: 'description',
+			content: 'Crie sua cartinha de amor para alguém especial',
+		},
+	]
 }
 
 export default function CreateLetter({ loaderData }: Route.ComponentProps) {
