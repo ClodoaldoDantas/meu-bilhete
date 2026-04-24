@@ -1,5 +1,6 @@
+import { LetterCard } from '~/components/letter-card'
 import type { Route } from './+types/$id'
-import { LetterCard } from './components/letter-card'
+import { CopyLetterUrlButton } from './components/copy-letter-url-button'
 
 type Letter = {
 	id: string
@@ -45,5 +46,12 @@ export function meta({ loaderData }: Route.MetaArgs): Route.MetaDescriptors {
 export default function LetterDetails({ loaderData }: Route.ComponentProps) {
 	const { letter } = loaderData
 
-	return <LetterCard letter={letter} />
+	return (
+		<main className="min-h-screen bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
+			<div className="w-full flex flex-col items-center">
+				<LetterCard letter={letter} />
+				<CopyLetterUrlButton />
+			</div>
+		</main>
+	)
 }
