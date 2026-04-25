@@ -1,3 +1,4 @@
+import { CheckIcon, ClipboardIcon } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '~/components/ui/button'
 
@@ -33,7 +34,13 @@ export function CopyLetterUrlButton() {
 	const buttonLabel = isCopied ? 'Copiado!' : 'Copiar URL'
 
 	return (
-		<Button size="lg" className="mt-10" type="button" onClick={handleCopyUrl}>
+		<Button size="lg" type="button" onClick={handleCopyUrl}>
+			{isCopied ? (
+				<CheckIcon className="size-5 text-green-400" />
+			) : (
+				<ClipboardIcon className="size-5" />
+			)}
+
 			{buttonLabel}
 		</Button>
 	)

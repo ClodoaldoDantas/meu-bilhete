@@ -51,8 +51,11 @@ export default function LetterDetails({ loaderData }: Route.ComponentProps) {
 		<main className="min-h-screen bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
 			<div className="w-full flex flex-col items-center">
 				<LetterCard letter={letter} />
-				<CopyLetterUrlButton />
-				<SupportProjectButton />
+
+				<div className="flex items-center gap-4 mt-10">
+					<CopyLetterUrlButton />
+					<SupportProjectButton />
+				</div>
 			</div>
 		</main>
 	)
