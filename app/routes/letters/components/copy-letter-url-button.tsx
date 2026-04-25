@@ -31,17 +31,19 @@ export function CopyLetterUrlButton() {
 		scheduleStateReset()
 	}
 
-	const buttonLabel = isCopied ? 'Copiado!' : 'Copiar URL'
-
 	return (
 		<Button size="lg" type="button" onClick={handleCopyUrl}>
 			{isCopied ? (
-				<CheckIcon className="size-5 text-green-400" />
+				<>
+					<CheckIcon className="size-5 text-green-400" />
+					Copiado!
+				</>
 			) : (
-				<ClipboardIcon className="size-5" />
+				<>
+					<ClipboardIcon className="size-5" />
+					Copiar URL
+				</>
 			)}
-
-			{buttonLabel}
 		</Button>
 	)
 }

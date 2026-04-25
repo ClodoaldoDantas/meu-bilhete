@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { LoaderIcon, MailIcon } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
@@ -125,7 +126,17 @@ export function LetterCardEditor() {
 				type="submit"
 				disabled={isSubmitting || !isValid}
 			>
-				{isSubmitting ? 'Enviando...' : 'Continuar'}
+				{isSubmitting ? (
+					<>
+						<LoaderIcon className="size-5 animate-spin" />
+						Criando...
+					</>
+				) : (
+					<>
+						<MailIcon className="size-5" />
+						Criar carta
+					</>
+				)}
 			</Button>
 		</form>
 	)
