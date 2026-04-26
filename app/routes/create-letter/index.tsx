@@ -13,7 +13,7 @@ export function meta(): Route.MetaDescriptors {
 
 export default function CreateLetter() {
 	return (
-		<main className="min-h-screen bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
+		<main className="min-h-dvh bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
 			<LetterCardEditor />
 		</main>
 	)

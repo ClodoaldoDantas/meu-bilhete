@@ -48,7 +48,7 @@ export default function LetterDetails({ loaderData }: Route.ComponentProps) {
 	const { letter } = loaderData
 
 	return (
-		<main className="min-h-screen bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
+		<main className="min-h-dvh bg-olive-50 flex flex-col items-center justify-center px-4 py-12">
 			<div className="w-full flex flex-col items-center">
 				<LetterCard letter={letter} />
 
