@@ -1,4 +1,5 @@
 import { LetterCard } from '~/components/letter-card'
+import { config } from '~/config'
 import type { Route } from './+types/$id'
 import { CopyLetterUrlButton } from './components/copy-letter-url-button'
 import { SupportProjectButton } from './components/support-project-button'
@@ -36,7 +37,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 
 export function meta({ loaderData }: Route.MetaArgs): Route.MetaDescriptors {
 	return [
-		{ title: `Carta para ${loaderData.letter.recipient} | Meu Bilhete` },
+		{ title: `Carta para ${loaderData.letter.recipient} | ${config.appName}` },
 		{
 			name: 'description',
 			content: `Carta de ${loaderData.letter.sender} para ${loaderData.letter.recipient}.`,

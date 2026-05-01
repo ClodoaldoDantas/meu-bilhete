@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router'
 import { Button } from '~/components/ui/button'
+import { config } from '~/config'
 
 export function LandingHero() {
 	const navigate = useNavigate()
@@ -8,7 +9,7 @@ export function LandingHero() {
 		<section className="w-full flex flex-col items-center">
 			<div className="flex flex-col items-start gap-2 w-full max-w-lg">
 				<div className="border border-zinc-900 px-3 py-1 text-xs font-semibold uppercase">
-					Apresentando
+					{config.appName}
 				</div>
 
 				<h1 className="text-4xl md:text-5xl font-semibold leading-tight">

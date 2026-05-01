@@ -1,4 +1,5 @@
 import { LetterCard } from '~/components/letter-card'
+import { config } from '~/config'
 import type { Route } from './+types/index'
 import { LandingHero } from './components/landing-hero'
 import { LettersCounter } from './components/letters-counter'
@@ -22,7 +23,7 @@ export async function loader() {
 
 export function meta(): Route.MetaDescriptors {
 	return [
-		{ title: 'Meu Bilhete' },
+		{ title: config.appName },
 		{
 			name: 'description',
 			content: 'Crie sua cartinha de amor para alguém especial',

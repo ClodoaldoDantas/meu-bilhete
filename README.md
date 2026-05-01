@@ -1,10 +1,10 @@
-# Meu Bilhete 💌
+# Cartinha de Amor 💌
 
 Uma aplicação web moderna para criar e compartilhar cartinhas de amor. Perfeita para expressar seus sentimentos de forma criativa e especial.
 
 ## 🎯 Sobre
 
-**Meu Bilhete** é uma aplicação React Router v7 que permite criar cartas digitais personalizadas e visualizar quantas cartas já foram escritas pela comunidade. A aplicação utiliza as tecnologias mais modernas do ecossistema React para oferecer uma experiência rápida e responsiva.
+**Cartinha de Amor** é uma aplicação React Router v7 que permite criar cartas digitais personalizadas e visualizar quantas cartas já foram escritas pela comunidade. A aplicação utiliza as tecnologias mais modernas do ecossistema React para oferecer uma experiência rápida e responsiva.
 
 ## ✨ Funcionalidades
 
@@ -126,7 +126,7 @@ Padrão React Router:
 
 ```typescript
 export function meta(): Route.MetaDescriptors {
-  return [{ title: 'Meu Bilhete' }]
+  return [{ title: 'Cartinha de amor' }]
 }
 
 export async function loader() {

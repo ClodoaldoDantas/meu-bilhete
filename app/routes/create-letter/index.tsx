@@ -1,9 +1,10 @@
+import { config } from '~/config'
 import type { Route } from './+types/index'
 import { LetterCardEditor } from './components/letter-card-editor'
 
 export function meta(): Route.MetaDescriptors {
 	return [
-		{ title: 'Criar Carta | Meu Bilhete' },
+		{ title: `Criar Carta | ${config.appName}` },
 		{
 			name: 'description',
 			content: 'Crie sua cartinha de amor para alguém especial',
