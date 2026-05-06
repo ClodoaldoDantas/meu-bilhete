@@ -10,7 +10,7 @@ type LetterCardProps = {
 
 export function LetterCard({ letter }: LetterCardProps) {
 	return (
-		<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm">
+		<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm print:shadow-none">
 			<div className="flex items-baseline">
 				<span className="text-base md:text-lg shrink-0 font-semibold text-foreground">
 					Meu amor,

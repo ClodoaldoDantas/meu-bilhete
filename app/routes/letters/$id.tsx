@@ -2,6 +2,7 @@ import { LetterCard } from '~/components/letter-card'
 import { config } from '~/config'
 import type { Route } from './+types/$id'
 import { CopyLetterUrlButton } from './components/copy-letter-url-button'
+import { PrintLetterButton } from './components/print-letter-button'
 import { SupportProjectButton } from './components/support-project-button'
 
 type Letter = {
@@ -53,8 +54,9 @@ export default function LetterDetails({ loaderData }: Route.ComponentProps) {
 			<div className="w-full flex flex-col items-center">
 				<LetterCard letter={letter} />
 
-				<div className="flex items-center gap-4 mt-10">
+				<div className="flex items-center gap-4 mt-10 print:hidden">
 					<CopyLetterUrlButton />
+					<PrintLetterButton />
 					<SupportProjectButton />
 				</div>
 			</div>
