@@ -54,7 +54,7 @@ export default function LetterDetails({ loaderData }: Route.ComponentProps) {
 			<div className="w-full flex flex-col items-center">
 				<LetterCard letter={letter} />
 
-				<div className="flex items-center gap-4 mt-10 print:hidden">
+				<div className="flex flex-col md:flex-row items-center gap-4 mt-10 print:hidden">
 					<CopyLetterUrlButton />
 					<PrintLetterButton />
 					<SupportProjectButton />
