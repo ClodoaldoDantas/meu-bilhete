@@ -82,22 +82,16 @@ export function LetterCardEditor() {
 			className="w-full flex flex-col items-center"
 		>
 			<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm">
-				<div className="flex items-baseline">
-					<span className="text-base md:text-lg shrink-0 font-semibold text-foreground">
-						Meu amor,
-					</span>
-
-					<input
-						type="text"
-						placeholder="Destinatário"
-						{...recipientRegister}
-						ref={(element) => {
-							recipientInputRef.current = element
-							recipientRegister.ref(element)
-						}}
-						className="w-full bg-transparent border-none outline-none text-base md:text-lg text-muted-foreground ml-1 placeholder:text-muted-foreground/60"
-					/>
-				</div>
+				<input
+					type="text"
+					placeholder="Destinatário"
+					{...recipientRegister}
+					ref={(element) => {
+						recipientInputRef.current = element
+						recipientRegister.ref(element)
+					}}
+					className="w-full bg-transparent border-none outline-none text-base md:text-lg font-semibold text-foreground placeholder:text-muted-foreground/60"
+				/>
 
 				<textarea
 					{...register('message')}

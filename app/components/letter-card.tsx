@@ -11,14 +11,9 @@ type LetterCardProps = {
 export function LetterCard({ letter }: LetterCardProps) {
 	return (
 		<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm print:shadow-none">
-			<div className="flex items-baseline">
-				<span className="text-base md:text-lg shrink-0 font-semibold text-foreground">
-					Meu amor,
-				</span>
-				<p className="w-full text-base md:text-lg text-muted-foreground ml-1">
-					{letter.recipient}
-				</p>
-			</div>
+			<p className="w-full text-base md:text-lg font-semibold text-foreground">
+				{letter.recipient},
+			</p>
 
 			<p className="w-full h-40 mt-6 leading-relaxed text-muted-foreground text-sm md:text-base overflow-y-auto">
 				{letter.message}

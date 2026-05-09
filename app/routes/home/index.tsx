@@ -34,7 +34,7 @@ export function meta(): Route.MetaDescriptors {
 const demoLetter = {
 	sender: 'Caio',
 	recipient: 'Laura',
-	message: `Laura, sua presença ilumina meus dias e faz tudo ficar mais leve.
+	message: `Sua presença ilumina meus dias e faz tudo ficar mais leve.
 	Com você, até o silêncio vira carinho.
 	Seu sorriso é meu lugar favorito.
 	E seu abraço, meu refúgio mais bonito.`,
