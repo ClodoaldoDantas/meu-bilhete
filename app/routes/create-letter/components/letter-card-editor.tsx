@@ -7,9 +7,18 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 import { Button } from '~/components/ui/button'
 
+const MESSAGE_LIMIT = 200
+
 const createLetterSchema = z.object({
 	recipient: z.string().trim().min(1, 'Informe o destinatário.'),
-	message: z.string().trim().min(1, 'Escreva uma mensagem.'),
+	message: z
+		.string()
+		.trim()
+		.min(1, 'Escreva uma mensagem.')
+		.max(
+			MESSAGE_LIMIT,
+			`A mensagem deve ter no máximo ${MESSAGE_LIMIT} caracteres.`,
+		),
 	sender: z.string().trim().min(1, 'Informe o seu nome.'),
 })
 
@@ -25,6 +34,7 @@ export function LetterCardEditor() {
 	const {
 		register,
 		handleSubmit,
+		watch,
 		formState: { isSubmitting, isValid },
 		reset,
 	} = useForm<CreateLetterFormData>({
@@ -39,6 +49,9 @@ export function LetterCardEditor() {
 
 	const recipientInputRef = useRef<HTMLInputElement>(null)
 	const recipientRegister = register('recipient')
+
+	const messageValue = watch('message') ?? ''
+	const messageLength = messageValue.length
 
 	useEffect(() => {
 		recipientInputRef.current?.focus()
@@ -96,9 +109,25 @@ export function LetterCardEditor() {
 				<textarea
 					{...register('message')}
 					spellCheck="false"
+					maxLength={MESSAGE_LIMIT}
 					className="w-full h-40 mt-6 bg-transparent border-none outline-none resize-none leading-relaxed text-muted-foreground placeholder:text-muted-foreground/50 text-sm md:text-base"
 					placeholder="Escreva sua mensagem aqui... Seja sincero(a) e deixe seu coração falar!"
+					aria-describedby="message-counter"
 				/>
+
+				<div className="mt-2">
+					<p
+						id="message-counter"
+						className={`text-sm text-right ${
+							messageLength >= MESSAGE_LIMIT
+								? 'text-destructive'
+								: 'text-muted-foreground/50'
+						}`}
+						aria-live="polite"
+					>
+						{messageLength}/{MESSAGE_LIMIT}
+					</p>
+				</div>
 
 				<div className="mt-8 text-right">
 					<p className="text-sm md:text-base font-semibold text-foreground mb-1">
