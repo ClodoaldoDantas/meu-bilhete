@@ -3,6 +3,10 @@ type LettersCounterProps = {
 }
 
 export function LettersCounter({ count }: LettersCounterProps) {
+	if (count <= 0) {
+		return null
+	}
+
 	const formattedCount = new Intl.NumberFormat('pt-BR').format(count)
 
 	return (
