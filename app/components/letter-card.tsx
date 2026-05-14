@@ -10,7 +10,7 @@ type LetterCardProps = {
 
 export function LetterCard({ letter }: LetterCardProps) {
 	return (
-		<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm print:shadow-none">
+		<div className="w-full max-w-lg bg-white border border-zinc-900 p-8 md:p-10 shadow-sm">
 			<p className="w-full text-base md:text-lg font-semibold text-foreground">
 				{letter.recipient},
 			</p>
