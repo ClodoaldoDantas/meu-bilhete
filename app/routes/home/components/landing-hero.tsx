@@ -1,6 +1,8 @@
+import { MailIcon } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import { Button } from '~/components/ui/button'
 import { config } from '~/config'
+import { SupportProjectButton } from './support-project-button'
 
 export function LandingHero() {
 	const navigate = useNavigate()
@@ -21,13 +23,18 @@ export function LandingHero() {
 					Uma experiência tátil traduzida para o digital.
 				</p>
 
-				<Button
-					size="lg"
-					className="mt-6 uppercase"
-					onClick={() => navigate('/letter/create')}
-				>
-					Criar minha carta
-				</Button>
+				<div className="mt-6 flex flex-col gap-4 md:flex-row">
+					<Button
+						size="lg"
+						className="uppercase"
+						onClick={() => navigate('/letter/create')}
+					>
+						<MailIcon className="size-5" />
+						Criar minha carta
+					</Button>
+
+					<SupportProjectButton />
+				</div>
 			</div>
 		</section>
 	)
